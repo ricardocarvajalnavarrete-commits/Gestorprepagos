@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Prepago - Chile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📱 Gestor de Prepago</h1>
+    <p class="subtitle">Registro de números y recargas</p>
+  </header>
+
+  <main>
+    <!-- FORMULARIO -->
+    <section class="card form-card">
+      <h2 id="form-title">➕ Agregar contacto</h2>
+      <form id="contact-form">
+        <input type="hidden" id="contact-id" />
+
+        <label for="nombre">Nombre de usuario</label>
+        <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required />
+
+        <label for="empresa">Empresa de telefonía</label>
+        <select id="empresa" required>
+          <option value="">-- Selecciona --</option>
+          <option value="Entel">Entel</option>
+          <option value="Movistar">Movistar</option>
+          <option value="Claro">Claro</option>
+          <option value="WOM">WOM</option>
+          <option value="Virgin Mobile">Virgin Mobile</option>
+          <option value="Mundo Pacífico">Mundo Pacífico</option>
+          <option value="GTD">GTD</option>
+          <option value="Otra">Otra</option>
+        </select>
+
+        <label for="numero">Número de prepago</label>
+        <div class="phone-input">
+          <span class="prefix">+56 9</span>
+          <input
+            type="text"
+            id="numero"
+            maxlength="8"
+            pattern="[0-9]{8}"
+            placeholder="12345678"
+            required
+          />
+        </div>
+        <small class="hint">Solo 8 dígitos numéricos</small>
+
+        <hr />
+        <h3>Última recarga</h3>
+
+        <label for="monto">Monto ($)</label>
+        <input type="number" id="monto" min="0" step="100" placeholder="Ej: 5000" />
+
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" />
+
+        <div class="buttons">
+          <button type="submit" id="btn-submit">Guardar</button>
+          <button type="button" id="btn-cancel" class="secondary" style="display:none">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- LISTADO -->
+    <section class="card list-card">
+      <div class="list-header">
+        <h2>📋 Contactos registrados</h2>
+        <input type="text" id="search" placeholder="🔍 Buscar..." />
+      </div>
+      <div id="contacts-list" class="contacts-list">
+        <p class="loading">Cargando...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hecho con ❤️ · Datos almacenados en Supabase</p>
+  </footer>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
